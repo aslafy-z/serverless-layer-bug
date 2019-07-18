@@ -27,4 +27,5 @@ package:
   individually: true
   exclude:
     - 'node_modules/**'
+    - 'package*.json'
 
