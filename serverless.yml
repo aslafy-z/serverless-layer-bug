@@ -1,0 +1,30 @@
+service: layer-bug
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: dev
+
+layers:
+  layer:
+    path: layer
+
+functions:
+  function:
+    handler: function.handler
+    layers:
+      - {Ref: LayerLambdaLayer}
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    slim: true
+    dockerizePip: false
+
+package:
+  individually: true
+  exclude:
+    - 'node_modules/**'
+
